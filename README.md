@@ -10,7 +10,7 @@ Various time series data mining techniques will be implemented, tested, and visu
 ### Perceptually Important Points (PIPs)
 The PIPs method is a dimensionality reduction technique for time series data. It represents a time series with its n most noticeable points. The PIPs algorithm is implemented in `ts_pips.py`, and in `ts_pips_testing.ipynb`, it is tested and visualized. More on the PIPs method and other techniques will follow. \
 \
-*For formal definitions and more information on the PIPs method, we refer to [Fu2008].*
+*For formal definitions and more information on the PIPs method, I refer to [Fu2008].*
 
 
 
