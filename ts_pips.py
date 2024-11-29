@@ -1,9 +1,4 @@
-"""
-In this file, different variants of the PIP algorithm (as defined in [Fu2008]) are implemented.
-"""
-
 import numpy as np
-from icecream import ic
 
 
 def dist_ED(p3, p1, p2) -> float:
@@ -80,13 +75,6 @@ def calc_pips(ts, n: int, dist):
 
     # Array for storing for each index of ts, whether we need to recalculate (1) the distance or we can use the previously calculated (cached) distance (0):
     recalculate_dists_arr = np.ones(shape=(m,), dtype=np.int32) # Initializing with [1, 1, 1, ..., 1, 1].
-    
-    # *** For debugging and testing *** 
-    # ic(pip_indices)
-    # ic(left_pip_index)
-    # ic(right_pip_index)
-    # ic(dists_arr)
-    # ic(recalculate_dists_arr)
 
     # PIP algorithm:
 
@@ -117,10 +105,6 @@ def calc_pips(ts, n: int, dist):
             while ts[pip_indices[pos]][0] < ts[index_new_pip][0]:
                 pos += 1
             pip_indices.insert(pos, index_new_pip)
-
-        # *** For debugging and testing *** 
-        # print("----------")
-        # ic(pip_indices)
     
         # Updating the arrays left_pip_index and right_pip_index:
         recalculate_dists_arr = np.zeros(shape=(m,), dtype=np.int32) # In this step we specify which distance to chache and which distance to recalculate.
@@ -137,12 +121,6 @@ def calc_pips(ts, n: int, dist):
             if index_left_pip < i and i < index_new_pip:
                 recalculate_dists_arr[i] = 1
                 right_pip_index[i] = index_new_pip
-        
-        # *** For debugging and testing *** 
-        # print("----------")        
-        # ic(recalculate_dists_arr)
-        # ic(left_pip_index)
-        # ic(right_pip_index)
     
     # Returning the calculated PIPs:
     pips = np.empty(shape=(n,2))
